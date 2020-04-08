@@ -1,7 +1,7 @@
 Package: com.haoict.twitternoads
 Name: Twitter No Ads
 Depends: mobilesubstrate
-Version: 0.0.1
+Version: 0.0.2
 Architecture: iphoneos-arm
 Description: Hide "Promoted" post for Twitter app
 Maintainer: Hao Nguyen
