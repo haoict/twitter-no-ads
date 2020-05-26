@@ -5,8 +5,11 @@
 
 Free & Open Source Tweak for Twitter app on iOS!
 
+<img src="https://haoict.github.io/cydia/images/tnabanner.jpg" alt="TikTok God" width="414"/>
+
 ## Features
 - Remove Ads
+- Can Save Video (long press on video to save)
 - Lightweight
 - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
 - Support latest Twitter version (If it doesn't work, you should update the app to latest version)
@@ -14,6 +17,10 @@ Free & Open Source Tweak for Twitter app on iOS!
 ## Cydia Repo
 
 [https://haoict.github.io/cydia](https://haoict.github.io/cydia)
+
+## Screenshot
+
+<img src="https://haoict.github.io/cydia/images/tnapref.png" alt="Twitter No Ads Preferences" width="280"/>
 
 ## Building
 
