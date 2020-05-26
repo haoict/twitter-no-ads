@@ -7,6 +7,7 @@ Free & Open Source Tweak for Twitter app on iOS!
 
 ## Features
 - Remove Ads
+- Can Save Video (long press on video to save)
 - Lightweight
 - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
 - Support latest Twitter version (If it doesn't work, you should update the app to latest version)
