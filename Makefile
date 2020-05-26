@@ -1,16 +1,16 @@
-ARCHS = arm64 arm64e
-TARGET = iphone:clang:12.2:12.2
-DEBUG = 0
-THEOS_DEVICE_IP = 192.168.1.21
-
-INSTALL_TARGET_PROCESSES = Twitter
+ARCHS = armv7 arm64 arm64e
+TARGET = iphone:clang:12.2:10.0
+INSTALL_TARGET_PROCESSES = Twitter Preferences
 
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = twitternoads
-
-twitternoads_FILES = Tweak.xm
+twitternoads_FILES = $(wildcard *.xm *.m)
+twitternoads_EXTRA_FRAMEWORKS = libhdev
 twitternoads_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
+SUBPROJECTS += pref
+
+include $(THEOS_MAKE_PATH)/aggregate.mk
