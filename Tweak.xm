@@ -4,12 +4,14 @@
  * Load Preferences
  */
 BOOL noads;
+BOOL hideNewsAndTrending;
 BOOL canSaveVideo;
 
 static void reloadPrefs() {
   NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH] ?: [@{} mutableCopy];
 
   noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
+  hideNewsAndTrending = [[settings objectForKey:@"hideNewsAndTrending"] ?: @(YES) boolValue];
   canSaveVideo = [[settings objectForKey:@"canSaveVideo"] ?: @(YES) boolValue];
 }
 
@@ -37,22 +39,46 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
   [viewController presentViewController:alert animated:YES completion:nil];
 }
 
-%group NoAds
+%group NewsFeedAndPosts
   %hook TFNItemsDataViewController
     - (id)tableViewCellForItem:(id)arg1 atIndexPath:(id)arg2 {
       UITableViewCell *tbvCell = %orig;
       id item = [self itemAtIndexPath: arg2];
-      if ([item respondsToSelector: @selector(isPromoted)] && [item performSelector:@selector(isPromoted)]) {
+
+      if (noads && [item respondsToSelector: @selector(isPromoted)] && [item performSelector:@selector(isPromoted)]) {
         [tbvCell setHidden: YES];
+        return tbvCell;
       }
-      return tbvCell;  
+      
+      if (hideNewsAndTrending) {
+        NSString *itemClassName = NSStringFromClass([item classForCoder]);
+        if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineTrendViewModel"]
+            || [itemClassName isEqualToString:@"T1Twitter.URTTimelineEventSummaryViewModel"]
+            || [itemClassName isEqualToString:@"T1URTTimelineMessageItemViewModel"]) {
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+      }
+
+      return tbvCell;
     }
 
     - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2 {
       id item = [self itemAtIndexPath: arg2];
-      if ([item respondsToSelector: @selector(isPromoted)] && [item performSelector:@selector(isPromoted)]) {
+
+      if (noads && [item respondsToSelector: @selector(isPromoted)] && [item performSelector:@selector(isPromoted)]) {
         return 0;
       }
+
+      if (hideNewsAndTrending) {
+        NSString *itemClassName = NSStringFromClass([item classForCoder]);
+        if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineTrendViewModel"]
+            || [itemClassName isEqualToString:@"T1Twitter.URTTimelineEventSummaryViewModel"]
+            || [itemClassName isEqualToString:@"T1URTTimelineMessageItemViewModel"]) {
+          return 0;
+        }
+      }
+
       return %orig;
     }
   %end
@@ -88,9 +114,7 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) reloadPrefs, CFSTR(PREF_CHANGED_NOTIF), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
   reloadPrefs();
 
-  if (noads) {
-    %init(NoAds);
-  }
+  %init(NewsFeedAndPosts);
 
   if (canSaveVideo) {
     %init(SaveVideo);

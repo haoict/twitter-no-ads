@@ -6,9 +6,11 @@
   "DEFAULT" = "Mặc định";
   "MAIN_PREFERENCES" = "Tùy chỉnh chính";
   "NO_ADS" = "Gỡ quảng cáo";
+  "REMOVE_ADS_IN_NEWS_FEED" = "Gỡ quảng cáo ở News Feed";
+  "REMOVE_NEWS_AND_TRENDING" = "Remove News And Trending";
+  "REMOVE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Remove News And Trending post on Search tab";
   "CAN_SAVE_VIDEO" = "Có thể tải video";
   "LONG_PRESS_ON_VIDEO_TO_SAVE" = "Ấn và giữ video để lưu";
-  "REMOVE_ADS_IN_NEWS_FEED" = "Gỡ quảng cáo ở News Feed";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
   "RESET_SETTINGS" = "Đặt lại tùy chỉnh";
   "SUPPORT_ME" = "Hỗ trợ tôi";
