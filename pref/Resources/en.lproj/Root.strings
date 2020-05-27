@@ -7,8 +7,10 @@
   "MAIN_PREFERENCES" = "Main Preferences";
   "NO_ADS" = "No Ads";
   "REMOVE_ADS_IN_NEWS_FEED" = "Remove Ads in News Feed";
-  "REMOVE_NEWS_AND_TRENDING" = "Remove News And Trending";
-  "REMOVE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Remove News And Trending post on Search tab";
+  "HIDE_NEWS_AND_TRENDING" = "Remove News And Trending";
+  "HIDE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Remove News And Trending post on Search tab";
+  "HIDE_WHO_TO_FOLLOW" = "Hide who to follow";
+  "HIDE_WHO_TO_FOLLOW_SECTION" = "Hide who to follow section";
   "CAN_SAVE_VIDEO" = "Can Save Video";
   "LONG_PRESS_ON_VIDEO_TO_SAVE" = "Long press on video to save";
   "OTHER_PREFERENCES" = "Other Preferences";

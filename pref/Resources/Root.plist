@@ -66,9 +66,28 @@
         <key>key</key>
         <string>hideNewsAndTrending</string>
         <key>label</key>
-        <string>REMOVE_NEWS_AND_TRENDING</string>
+        <string>HIDE_NEWS_AND_TRENDING</string>
         <key>subtitle</key>
-        <string>REMOVE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB</string>
+        <string>HIDE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB</string>
+        <key>PostNotification</key>
+        <string>com.haoict.twitternoadspref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <true/>
+        <key>defaults</key>
+        <string>com.haoict.twitternoadspref</string>
+        <key>key</key>
+        <string>hideWhoToFollow</string>
+        <key>label</key>
+        <string>HIDE_WHO_TO_FOLLOW</string>
+        <key>subtitle</key>
+        <string>HIDE_WHO_TO_FOLLOW_SECTION</string>
         <key>PostNotification</key>
         <string>com.haoict.twitternoadspref/PrefChanged</string>
       </dict>
