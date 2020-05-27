@@ -5,6 +5,7 @@
  */
 BOOL noads;
 BOOL hideNewsAndTrending;
+BOOL hideWhoToFollow;
 BOOL canSaveVideo;
 
 static void reloadPrefs() {
@@ -12,6 +13,7 @@ static void reloadPrefs() {
 
   noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
   hideNewsAndTrending = [[settings objectForKey:@"hideNewsAndTrending"] ?: @(YES) boolValue];
+  hideWhoToFollow = [[settings objectForKey:@"hideWhoToFollow"] ?: @(YES) boolValue];
   canSaveVideo = [[settings objectForKey:@"canSaveVideo"] ?: @(YES) boolValue];
 }
 
@@ -50,8 +52,8 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
         return tbvCell;
       }
       
+      NSString *itemClassName = NSStringFromClass([item classForCoder]);
       if (hideNewsAndTrending) {
-        NSString *itemClassName = NSStringFromClass([item classForCoder]);
         if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineTrendViewModel"]
             || [itemClassName isEqualToString:@"T1Twitter.URTTimelineEventSummaryViewModel"]
             || [itemClassName isEqualToString:@"T1URTTimelineMessageItemViewModel"]) {
@@ -59,6 +61,33 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
           return tbvCell;
         }
       }
+
+      if (hideWhoToFollow) {
+        if ([itemClassName isEqualToString:@"TFNTwitterUser"] || [itemClassName isEqualToString:@"T1URTTimelineUserItemViewModel"]) {
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+
+        if ([itemClassName isEqualToString:@"T1Twitter.URTModuleHeaderViewModel"]) {
+          // Ivar textIvar = class_getInstanceVariable([item class], "text");
+          // id text = object_getIvar(item, textIvar);
+          // if ([text isEqualToString:@"Who to follow"]) { }
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+
+        if ([itemClassName isEqualToString:@"T1URTFooterViewModel"] && [((T1URTFooterViewModel *)item).url.absoluteString containsString:@"connect_people"] ) {
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+
+        if ([itemClassName isEqualToString:@"TFNTwitterModuleFooter"] && [((TFNTwitterModuleFooter *)item).url.absoluteString containsString:@"connect_people"] ) {
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+      }
+
+      NSLog(@"hao---%@", itemClassName);
 
       return tbvCell;
     }
@@ -70,8 +99,8 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
         return 0;
       }
 
+      NSString *itemClassName = NSStringFromClass([item classForCoder]);
       if (hideNewsAndTrending) {
-        NSString *itemClassName = NSStringFromClass([item classForCoder]);
         if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineTrendViewModel"]
             || [itemClassName isEqualToString:@"T1Twitter.URTTimelineEventSummaryViewModel"]
             || [itemClassName isEqualToString:@"T1URTTimelineMessageItemViewModel"]) {
@@ -79,6 +108,37 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
         }
       }
 
+      if (hideWhoToFollow) {
+        if ([itemClassName isEqualToString:@"TFNTwitterUser"] || [itemClassName isEqualToString:@"T1URTTimelineUserItemViewModel"]) {
+          return 0;
+        }
+
+        if ([itemClassName isEqualToString:@"T1Twitter.URTModuleHeaderViewModel"]) {
+          return 0;
+        }
+
+        if ([itemClassName isEqualToString:@"T1URTFooterViewModel"] && [((T1URTFooterViewModel *)item).url.absoluteString containsString:@"connect_people"] ) {
+          return 0;
+        }
+
+        if ([itemClassName isEqualToString:@"TFNTwitterModuleFooter"] && [((TFNTwitterModuleFooter *)item).url.absoluteString containsString:@"connect_people"] ) {
+          return 0;
+        }
+      }
+
+      return %orig;
+    }
+
+    - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2 {
+      if (self.sections 
+          && self.sections[arg2] 
+          && ((NSArray* )self.sections[arg2]).count
+          && self.sections[arg2][0]) {
+        NSString *sectionClassName = NSStringFromClass([self.sections[arg2][0] classForCoder]);
+        if ([sectionClassName isEqualToString:@"TFNTwitterUser"]) {
+          return 0;
+        }
+      }
       return %orig;
     }
   %end

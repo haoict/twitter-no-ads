@@ -1,10 +1,12 @@
 #import <Foundation/Foundation.h>
+// #include <objc/objc-runtime.h>
 #import <libhdev/HUtilities/HDownloadMedia.h>
 
 #define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.twitternoadspref.plist"
 #define PREF_CHANGED_NOTIF "com.haoict.twitternoadspref/PrefChanged"
 
 @interface TFNItemsDataViewController : NSObject
+@property(copy, nonatomic) NSArray *sections;
 - (id)itemAtIndexPath:(id)arg1;
 @end
 
@@ -49,4 +51,12 @@
 
 @interface T1SlideshowViewController : UIViewController
 @property (nonatomic, readonly, strong) id<T1StatusViewModel> slideStatus;
+@end
+
+@interface T1URTFooterViewModel : NSObject
+@property(nonatomic, readonly) NSURL *url;
+@end
+
+@interface TFNTwitterModuleFooter : NSObject
+@property(nonatomic, readonly) NSURL *url;
 @end

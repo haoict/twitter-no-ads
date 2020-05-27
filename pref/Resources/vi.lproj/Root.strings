@@ -7,8 +7,10 @@
   "MAIN_PREFERENCES" = "Tùy chỉnh chính";
   "NO_ADS" = "Gỡ quảng cáo";
   "REMOVE_ADS_IN_NEWS_FEED" = "Gỡ quảng cáo ở News Feed";
-  "REMOVE_NEWS_AND_TRENDING" = "Remove News And Trending";
-  "REMOVE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Remove News And Trending post on Search tab";
+  "HIDE_NEWS_AND_TRENDING" = "Ẩn Tin tức và chủ đề nổi trội";
+  "HIDE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Ẩn Tin tức và chủ đề nổi trội ở tab Tìm kiếm";
+  "HIDE_WHO_TO_FOLLOW" = "Ẩn gợi ý theo dõi";
+  "HIDE_WHO_TO_FOLLOW_SECTION" = "Ẩn mục gợi ý theo dõi";
   "CAN_SAVE_VIDEO" = "Có thể tải video";
   "LONG_PRESS_ON_VIDEO_TO_SAVE" = "Ấn và giữ video để lưu";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
