@@ -7,6 +7,7 @@ BOOL noads;
 BOOL hideNewsAndTrending;
 BOOL hideWhoToFollow;
 BOOL canSaveVideo;
+BOOL skipAnalyticUrl;
 
 static void reloadPrefs() {
   NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH] ?: [@{} mutableCopy];
@@ -15,6 +16,7 @@ static void reloadPrefs() {
   hideNewsAndTrending = [[settings objectForKey:@"hideNewsAndTrending"] ?: @(YES) boolValue];
   hideWhoToFollow = [[settings objectForKey:@"hideWhoToFollow"] ?: @(YES) boolValue];
   canSaveVideo = [[settings objectForKey:@"canSaveVideo"] ?: @(YES) boolValue];
+  skipAnalyticUrl = [[settings objectForKey:@"skipAnalyticUrl"] ?: @(YES) boolValue];
 }
 
 static void showDownloadPopup(id twStatus, UIViewController *viewController, void (^origHandler)(UIAlertAction *)) {
@@ -179,6 +181,14 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
   // %end
 %end
 
+%group SkipAnalyticUrl
+  %hook TFSTwitterEntityURL
+    - (NSString*)url{
+      return self.expandedURL;
+    }
+  %end
+%end
+
 %ctor {
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) reloadPrefs, CFSTR(PREF_CHANGED_NOTIF), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
   reloadPrefs();
@@ -187,5 +197,9 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
 
   if (canSaveVideo) {
     %init(SaveVideo);
+  }
+
+  if (skipAnalyticUrl) {
+    %init(SkipAnalyticUrl);
   }
 }

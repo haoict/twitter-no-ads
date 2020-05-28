@@ -111,6 +111,25 @@
         <string>com.haoict.twitternoadspref/PrefChanged</string>
       </dict>
 
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <true/>
+        <key>defaults</key>
+        <string>com.haoict.twitternoadspref</string>
+        <key>key</key>
+        <string>skipAnalyticUrl</string>
+        <key>label</key>
+        <string>SKIP_ANALYTIC_URL</string>
+        <key>subtitle</key>
+        <string>SKIP_ANALYTIC_URL_WHEN_OPEN_A_LINK</string>
+        <key>PostNotification</key>
+        <string>com.haoict.twitternoadspref/PrefChanged</string>
+      </dict>
+
       <!-- Support Me -->
       <dict>
         <key>cell</key>

@@ -13,6 +13,8 @@
   "HIDE_WHO_TO_FOLLOW_SECTION" = "Ẩn mục gợi ý theo dõi";
   "CAN_SAVE_VIDEO" = "Có thể tải video";
   "LONG_PRESS_ON_VIDEO_TO_SAVE" = "Ấn và giữ video để lưu";
+  "SKIP_ANALYTIC_URL" = "Bỏ qua Analytic URL";
+  "SKIP_ANALYTIC_URL_WHEN_OPEN_A_LINK" = "Bỏ qua analytic URL (t.co) khi mở link";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
   "RESET_SETTINGS" = "Đặt lại tùy chỉnh";
   "SUPPORT_ME" = "Hỗ trợ tôi";

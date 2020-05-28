@@ -1,7 +1,7 @@
 Package: com.haoict.twitternoads
 Name: Twitter No Ads
 Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 2.0.0), firmware (>= 10)
-Version: 1.1.0
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Free & Open Source Tweak for Twitter
  Free & Open Source Tweak for Twitter
@@ -12,6 +12,7 @@ Description: Free & Open Source Tweak for Twitter
  - Hide News and Trending posts in search tab
  - Hide who to follow section
  - Can Save Video (long press on video to save)
+ - Skip analytic URL when open a link
  - Lightweight
  - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
  - Support latest Twitter version (If it doesn't work, you should update the app to latest version)
