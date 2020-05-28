@@ -64,3 +64,7 @@
 @interface T1URTTimelineUserItemViewModel : NSObject
 @property(readonly, nonatomic) NSString *scribeComponent;
 @end
+
+@interface TFSTwitterEntityURL : NSObject
+@property(readonly, copy, nonatomic) NSString *expandedURL;
+@end

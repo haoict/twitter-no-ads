@@ -13,6 +13,8 @@
   "HIDE_WHO_TO_FOLLOW_SECTION" = "Hide who to follow section";
   "CAN_SAVE_VIDEO" = "Can Save Video";
   "LONG_PRESS_ON_VIDEO_TO_SAVE" = "Long press on video to save";
+  "SKIP_ANALYTIC_URL" = "Skip Analytic URL";
+  "SKIP_ANALYTIC_URL_WHEN_OPEN_A_LINK" = "Skip analytic URL (t.co) when open a link";
   "OTHER_PREFERENCES" = "Other Preferences";
   "RESET_SETTINGS" = "Reset Settings";
   "SUPPORT_ME" = "Support Me";
