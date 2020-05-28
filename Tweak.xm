@@ -53,6 +53,7 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
       }
       
       NSString *itemClassName = NSStringFromClass([item classForCoder]);
+
       if (hideNewsAndTrending) {
         if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineTrendViewModel"]
             || [itemClassName isEqualToString:@"T1Twitter.URTTimelineEventSummaryViewModel"]
@@ -63,7 +64,12 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
       }
 
       if (hideWhoToFollow) {
-        if ([itemClassName isEqualToString:@"TFNTwitterUser"] || [itemClassName isEqualToString:@"T1URTTimelineUserItemViewModel"]) {
+        if ([itemClassName isEqualToString:@"TFNTwitterUser"]) {
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+
+        if ([itemClassName isEqualToString:@"T1URTTimelineUserItemViewModel"] && [((T1URTTimelineUserItemViewModel *)item).scribeComponent isEqualToString:@"suggest_who_to_follow"]) {
           [tbvCell setHidden: YES];
           return tbvCell;
         }
@@ -87,8 +93,6 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
         }
       }
 
-      NSLog(@"hao---%@", itemClassName);
-
       return tbvCell;
     }
 
@@ -100,6 +104,7 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
       }
 
       NSString *itemClassName = NSStringFromClass([item classForCoder]);
+
       if (hideNewsAndTrending) {
         if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineTrendViewModel"]
             || [itemClassName isEqualToString:@"T1Twitter.URTTimelineEventSummaryViewModel"]
@@ -109,7 +114,11 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
       }
 
       if (hideWhoToFollow) {
-        if ([itemClassName isEqualToString:@"TFNTwitterUser"] || [itemClassName isEqualToString:@"T1URTTimelineUserItemViewModel"]) {
+        if ([itemClassName isEqualToString:@"TFNTwitterUser"]) {
+          return 0;
+        }
+
+        if ([itemClassName isEqualToString:@"T1URTTimelineUserItemViewModel"] && [((T1URTTimelineUserItemViewModel *)item).scribeComponent isEqualToString:@"suggest_who_to_follow"]) {
           return 0;
         }
 

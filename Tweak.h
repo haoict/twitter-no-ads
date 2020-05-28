@@ -60,3 +60,7 @@
 @interface TFNTwitterModuleFooter : NSObject
 @property(nonatomic, readonly) NSURL *url;
 @end
+
+@interface T1URTTimelineUserItemViewModel : NSObject
+@property(readonly, nonatomic) NSString *scribeComponent;
+@end
