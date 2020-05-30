@@ -66,7 +66,7 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
       }
 
       if (hideWhoToFollow) {
-        if ([itemClassName isEqualToString:@"TFNTwitterUser"]) {
+        if ([itemClassName isEqualToString:@"TFNTwitterUser"] && [NSStringFromClass([self class]) isEqualToString:@"T1HomeTimelineItemsViewController"]) {
           [tbvCell setHidden: YES];
           return tbvCell;
         }
@@ -116,7 +116,7 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
       }
 
       if (hideWhoToFollow) {
-        if ([itemClassName isEqualToString:@"TFNTwitterUser"]) {
+        if ([itemClassName isEqualToString:@"TFNTwitterUser"] && [NSStringFromClass([self class]) isEqualToString:@"T1HomeTimelineItemsViewController"]) {
           return 0;
         }
 
