@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 // #include <objc/objc-runtime.h>
-#import <libhdev/HUtilities/HDownloadMedia.h>
+#import <libhdev/HUtilities/HDownloadMediaWithProgress.h>
 
 #define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.twitternoadspref.plist"
 #define PREF_CHANGED_NOTIF "com.haoict.twitternoadspref/PrefChanged"

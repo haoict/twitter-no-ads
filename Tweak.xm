@@ -20,7 +20,7 @@ static void reloadPrefs() {
 }
 
 static void showDownloadPopup(id twStatus, UIViewController *viewController, void (^origHandler)(UIAlertAction *)) {
-  UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? UIAlertControllerStyleAlert : UIAlertControllerStyleActionSheet];
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:IS_iPAD ? UIAlertControllerStyleAlert : UIAlertControllerStyleActionSheet];
   [alert addAction:[UIAlertAction actionWithTitle:@"Save Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     NSString* videoUrl = nil;
     if ([twStatus isKindOfClass:%c(TFNTwitterStatus)]) {
@@ -36,7 +36,7 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
         }
       }
     }
-    [HDownloadMedia checkPermissionToPhotosAndDownload:videoUrl appendExtension:nil mediaType:Video toAlbum:@"Twitter"];
+    [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:videoUrl appendExtension:nil mediaType:Video toAlbum:@"Twitter" viewController:viewController];
   }]];
   [alert addAction:[UIAlertAction actionWithTitle:@"Twitter Options" style:UIAlertActionStyleDefault handler:origHandler]];
   [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];

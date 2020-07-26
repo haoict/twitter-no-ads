@@ -15,7 +15,7 @@
   return self;
 }
 
--(void)apply {
+- (void)apply {
   [HCommon killProcess:@"Twitter" viewController:self alertTitle:@TWEAK_TITLE message:[self localizedItem:@"DO_YOU_REALLY_WANT_TO_KILL_TWITTER"] confirmActionLabel:[self localizedItem:@"CONFIRM"] cancelActionLabel:[self localizedItem:@"CANCEL"]];
 }
 
