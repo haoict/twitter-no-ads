@@ -7,6 +7,8 @@
   "MAIN_PREFERENCES" = "Tùy chỉnh chính";
   "NO_ADS" = "Gỡ quảng cáo";
   "REMOVE_ADS_IN_NEWS_FEED" = "Gỡ quảng cáo ở News Feed";
+  "NO_FLEETS" = "Gỡ Fleets";
+  "REMOVE_FLEETS_IN_NEWS_FEED" = "Gỡ Fleets ở News Feed";
   "HIDE_NEWS_AND_TRENDING" = "Ẩn Tin tức và chủ đề nổi trội";
   "HIDE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Ẩn Tin tức và chủ đề nổi trội ở tab Tìm kiếm";
   "HIDE_WHO_TO_FOLLOW" = "Ẩn gợi ý theo dõi";

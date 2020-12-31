@@ -9,6 +9,7 @@ Free & Open Source Tweak for Twitter app on iOS!
 
 ## Features
 - Remove Ads
+- Remove Fleets
 - Hide News and Trending posts in search tab
 - Hide who to follow section
 - Can Save Video (long press on video to save)

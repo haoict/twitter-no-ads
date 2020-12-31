@@ -7,6 +7,8 @@
   "MAIN_PREFERENCES" = "Main Preferences";
   "NO_ADS" = "No Ads";
   "REMOVE_ADS_IN_NEWS_FEED" = "Remove Ads in News Feed";
+  "NO_FLEETS" = "No Fleets";
+  "REMOVE_FLEETS_IN_NEWS_FEED" = "Remove Fleets in News Feed";
   "HIDE_NEWS_AND_TRENDING" = "Remove News And Trending";
   "HIDE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Remove News And Trending post on Search tab";
   "HIDE_WHO_TO_FOLLOW" = "Hide who to follow";

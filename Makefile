@@ -1,5 +1,5 @@
 ARCHS = arm64 arm64e
-TARGET = iphone:clang:12.2:10.0
+TARGET = iphone:clang:12.4:10.0
 INSTALL_TARGET_PROCESSES = Twitter Preferences
 
 include $(THEOS)/makefiles/common.mk
@@ -14,3 +14,6 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += pref
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
+
+clean::
+	rm -rf .theos packages
