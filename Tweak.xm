@@ -17,28 +17,25 @@ static void reloadPrefs() {
   nofleets = [[settings objectForKey:@"nofleets"] ?: @(NO) boolValue];
   hideNewsAndTrending = [[settings objectForKey:@"hideNewsAndTrending"] ?: @(NO) boolValue];
   hideWhoToFollow = [[settings objectForKey:@"hideWhoToFollow"] ?: @(NO) boolValue];
-  canSaveVideo = [[settings objectForKey:@"canSaveVideo"] ?: @(NO) boolValue];
+  canSaveVideo = [[settings objectForKey:@"canSaveVideo"] ?: @(YES) boolValue];
   skipAnalyticUrl = [[settings objectForKey:@"skipAnalyticUrl"] ?: @(NO) boolValue];
 }
 
 static void showDownloadPopup(id twStatus, UIViewController *viewController, void (^origHandler)(UIAlertAction *)) {
   UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:IS_iPAD ? UIAlertControllerStyleAlert : UIAlertControllerStyleActionSheet];
   [alert addAction:[UIAlertAction actionWithTitle:@"Save Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-    NSString* videoUrl = nil;
-    if ([twStatus isKindOfClass:%c(TFNTwitterStatus)]) {
-      videoUrl = ((TFNTwitterStatus *)twStatus).primaryMediaVideoURL;
-    }
-    // if primary video is m3u8 format, we can't save it, thus we have to look for another place to find .mp4 and save highest bitrate
-    if (!videoUrl || [videoUrl containsString:@".m3u8"]) {
-      long long bitrate = 0;
-      for (TFSTwitterEntityMediaVideoVariant *video in ((id<T1StatusViewModel>)twStatus).primaryMediaInfo.mediaEntity.videoInfo.variants) {
-        if ([video.contentType isEqualToString:@"video/mp4"] && video.bitrate > bitrate) {
-          bitrate = video.bitrate;
-          videoUrl = video.url;
-        }
+    UIAlertController* qualitySelectionAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:IS_iPAD ? UIAlertControllerStyleAlert : UIAlertControllerStyleActionSheet];
+
+    int linkCount = 1;
+    for (TFSTwitterEntityMediaVideoVariant *video in ((id<T1StatusViewModel>)twStatus).primaryMediaInfo.mediaEntity.videoInfo.variants) {
+      if ([video.contentType isEqualToString:@"video/mp4"]) {
+        [qualitySelectionAlert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Link %d (bitrate: %lld)", linkCount++, video.bitrate] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+          [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:video.url appendExtension:nil mediaType:Video toAlbum:@"Twitter" viewController:viewController];
+        }]];
       }
     }
-    [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:videoUrl appendExtension:nil mediaType:Video toAlbum:@"Twitter" viewController:viewController];
+    [qualitySelectionAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [viewController presentViewController:qualitySelectionAlert animated:YES completion:nil];
   }]];
   [alert addAction:[UIAlertAction actionWithTitle:@"Twitter Options" style:UIAlertActionStyleDefault handler:origHandler]];
   [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
@@ -86,6 +83,11 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
           return tbvCell;
         }
 
+        if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineCarouselViewModel"]) {
+          [tbvCell setHidden: YES];
+          return tbvCell;
+        }
+
         if ([itemClassName isEqualToString:@"T1URTFooterViewModel"] && [((T1URTFooterViewModel *)item).url.absoluteString containsString:@"connect_people"] ) {
           [tbvCell setHidden: YES];
           return tbvCell;
@@ -127,6 +129,10 @@ static void showDownloadPopup(id twStatus, UIViewController *viewController, voi
         }
 
         if ([itemClassName isEqualToString:@"T1Twitter.URTModuleHeaderViewModel"]) {
+          return 0;
+        }
+
+        if ([itemClassName isEqualToString:@"T1Twitter.URTTimelineCarouselViewModel"]) {
           return 0;
         }
 

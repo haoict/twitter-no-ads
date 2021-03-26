@@ -102,7 +102,7 @@
         <key>cellClass</key>
         <string>HPSSwitchCell</string>
         <key>default</key>
-        <false/>
+        <true/>
         <key>defaults</key>
         <string>com.haoict.twitternoadspref</string>
         <key>key</key>

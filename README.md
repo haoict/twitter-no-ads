@@ -15,8 +15,7 @@ Free & Open Source Tweak for Twitter app on iOS!
 - Can Save Video (long press on video to save)
 - Skip analytic URL when open a link
 - Lightweight
-- Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
-- Support latest Twitter version (If it doesn't work, you should update the app to latest version)
+- Support iOS 12 - 14 & latest Twitter version
 
 ## Cydia Repo
 
