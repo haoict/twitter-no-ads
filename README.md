@@ -37,6 +37,8 @@ make do
 
 [haoict](https://github.com/haoict)
 
+John Wilson (zh translation)
+
 Contributions of any kind welcome!
 
 ## License
