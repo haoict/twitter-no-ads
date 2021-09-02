@@ -1,0 +1,30 @@
+{
+"APPLY" = "Anwenden";
+"BUY_ME_A_COFFEE" = "Kauf mir einen Kaffee";
+"CANCEL" = "Abbrechen";
+"CAN_SAVE_VIDEO" = "Video speichern";
+"CONFIRM" = "Bestätigen";
+"DEFAULT" = "Standard";
+"DONATION" = "Spende 💰";
+"DO_YOU_REALLY_WANT_TO_KILL_TWITTER" = "Willst du Twitter wirklich neu laden?";
+"FEATURE_REQUEST" = "Erweiterung anfragen ✨";
+"FOUND_A_BUG" = "Fehler gefunden 🐛";
+"HIDE_NEWS_AND_TRENDING" = "Nachrichten & Trends entfernen";
+"HIDE_NEWS_AND_TRENDING_POST_ON_SEARCH_TAB" = "Nachrichten\/Trends aus \"Suchen\" entfernen";
+"HIDE_WHO_TO_FOLLOW" = "Keine Follower-Empfehlungen";
+"HIDE_WHO_TO_FOLLOW_SECTION" = "Abschnitt mit Follower-Empfehlung ausblenden";
+"LEAVE_A_BUG_REPORT_ON_GITHUB" = "Hinterlasse einen Fehlerbericht auf Github";
+"LONG_PRESS_ON_VIDEO_TO_SAVE" = "Lange auf das Video drücken zum Speichern";
+"MAIN_PREFERENCES" = "Haupteinstellungen";
+"NO_ADS" = "Keine Werbung";
+"NO_FLEETS" = "Keine Fleets";
+"OTHER_PREFERENCES" = "Andere Einstellungen";
+"REMOVE_ADS_IN_NEWS_FEED" = "Werbung im Newsfeed entfernen";
+"REMOVE_FLEETS_IN_NEWS_FEED" = "Fleets im Newsfeed entfernen";
+"RESET_SETTINGS" = "Einstellungen zurücksetzen";
+"SEND_ME_AN_EMAIL_WITH_YOUR_REQUEST" = "Sende mir eine E-Mail mit deiner Anfrage";
+"SKIP_ANALYTIC_URL" = "Analytische URL überspringen";
+"SKIP_ANALYTIC_URL_WHEN_OPEN_A_LINK" = "Überspringe analytische URL (t.co)";
+"SOURCE_CODE" = "Quellcode 🤖";
+"SUPPORT_ME" = "Unterstütze mich";
+}
